@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Netflix</title>
+    <style>
+        /* Global styles */
+        .tv {
+            text-align: center;
+        }
+
+        .movie {
+            text-align: center;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #141414;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .search-box input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            background-color: #e50914;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* Banner styles */
+        .banner {
+            position: relative;
+        }
+
+        .banner img {
+            width: 100%;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .banner-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .banner-content button {
+            background-color: #e50914;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* TV shows styles */
+        .tv-shows h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tv-shows ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tv-shows li {
+            width: calc(33.333% - 20px);
+            margin-right: 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .tv-shows li:last-child {
+            margin-right: 0;
+        }
+
+        .tv-shows img {
+            width: 100%;
+        }
+
+        .tv-shows .tv-show-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .tv-shows .tv-show-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tv-shows .tv-show-info p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .tv-shows .tv-show-meta {
+            display: flex;
+        }
+
+        .tv-shows .tv-show-meta span {
+            margin-right: 20px;
+        }
+
+        .tv-shows .tv-show-meta span:last-child {
+            margin-right: 0;
+        }
+
+        .tv-shows .tv-show-year {
+            font-size: 0.8rem;
+        }
+
+        .tv-shows .tv-show-rating {
+            background-color: #e50914;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        /* Movies styles */
+        .movies {
+            margin-top: 50px;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+
+        .movies h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .movies ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .movies li {
+            margin-right: 20px;
+            margin-bottom: 30px;
+            width: 200px;
+        }
+
+        .movies li:last-child {
+            margin-right: 0;
+        }
+
+        .movies img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .movie-info {
+            margin-top: 10px;
+            background-color: #1f1f1f;
+            color: #fff;
+            border-radius: 5px;
+            height: 220px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .movie-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .movie-info p {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .movie-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .movie-meta span {
+            font-size: 12px;
+            color: #b7b7b7;
+        }
+
+        .movie-meta span:first-child {
+            margin-right: 10px;
+        }
+
+        .movie-meta span:last-child {
+            margin-left: 10px;
+        }
+
+        footer {
+            background-color: #141414;
+            padding: 40px 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        footer li {
+            margin: 0 10px 10px 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            footer ul {
+                justify-content: center;
+            }
+
+            footer li {
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tv">TV Shows</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="react.html">Download App</a></li>
+                <li><a href="#">My List</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+    </header>
+    <main>
+        <section id="home" class="banner">
+            <img src="renewed-netflix-shows-2023-beyond-jpg.webp" alt="Netflix banner">
+            <div class="banner-content">
+                <h1>Watch TV shows & movies anytime, anywhere.</h1>
+                <p>Join free for 30 days to see everything Netflix has to offer.</p>
+                <button>Join Free for a Month</button>
+            </div>
+        </section>
+        <section class="tv-shows">
+            <h2 id="tv" class="tv">TV Shows</h2>
+            <ul>
+                <li>
+                    <img src="1.png" alt="Stranger Things">
+                    <div class="tv-show-info">
+                        <h3>Stranger Things</h3>
+                        <p>A love letter to the supernatural classics of the 80s, Stranger Things is the story of a
+                            young boy who vanishes into thin air. As friends, family and local police search for
+                            answers, they are drawn into an extraordinary mystery involving top-secret government
+                            experiments, terrifying supernatural forces and one very strange little girl.</p>
+                        <div class="tv-show-meta">
+                            <span class="tv-show-year">2016</span>
+                            <span class="tv-show-rating">TV-18</span>
+                            <span class="tv-show-duration">3 Seasons</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="2.png" alt="Stranger Things">
+                    <div class="tv-show-info">
+                        <h3>Peaky Blinders</h3>
+                        <p>"Peaky Blinders" is a British crime drama TV series set in the aftermath of World War I in
+                            Birmingham, England, and follows the Shelby crime family, led by ruthless gang leader Tommy
+                            Shelby. The series revolves around the family's ambition to
+                            expand their criminal empire while facing challenges from rival gangs, law enforcement, and
+                            political turmoil.</p>
+                        <div class="tv-show-meta">
+                            <span class="tv-show-year">2013</span>
+                            <span class="tv-show-rating">TV-14</span>
+                            <span class="tv-show-duration">6 Seasons</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="3.png" alt="Stranger Things">
+                    <div class="tv-show-info">
+                        <h3>Money Heist</h3>
+                        <p>"Money Heist" is a Spanish TV series about a group of robbers who plan and execute a heist on
+                            the Royal Mint of Spain. The series follows the robbers, who use city names as their code
+                            names, as they negotiate with hostages and the police while trying to escape with their
+                            loot.</p>
+                        <div class="tv-show-meta">
+                            <span class="tv-show-year">2017</span>
+                            <span class="tv-show-rating">TV-20</span>
+                            <span class="tv-show-duration">5 Seasons</span>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </section>
+        <section class="movies">
+            <h2 id="movies" class="movie">Movies</h2>
+            <ul>
+                <li>
+                    <img src="irishman.png" alt="The Irishman">
+                    <div class="movie-info">
+                        <h3>The Irishman</h3>
+                        <p>A mob hitman recalls his possible involvement with the slaying of Jimmy Hoffa.</p>
+                        <div class="movie-meta">
+                            <span class="movie-year">2019</span>
+                            <span class="movie-rating">R</span>
+                            <span class="movie-duration">3h 2min</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="godfather.png" alt="Godfather">
+                    <div class="movie-info">
+                        <h3>Godfather</h3>
+                        <p>The Godfather is a trilogy of American crime films directed by F.F Coppola inspired
+                            by the 1969 novel of the same name by Italian American author M.Puzo.</p>
+                        <div class="movie-meta">
+                            <span class="movie-year">1972</span>
+                            <span class="movie-rating">A</span>
+                            <span class="movie-duration">3h 19min</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="shawshank.png" alt="Shawshank">
+                    <div class="movie-info">
+                        <h3>Shawshank</h3>
+                        <p>Sherna Noah in London 'THE Shawshank Redemption' has been voted the greatest movie of all
+                            time.</p>
+                        <div class="movie-meta">
+                            <span class="movie-year">1994</span>
+                            <span class="movie-rating">R</span>
+                            <span class="movie-duration">3h 00min</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="fightclub.png" alt="Fightclub">
+                    <div class="movie-info">
+                        <h3>Fightclub</h3>
+                        <p>Unhappy with his capitalistic lifestyle, a white-collared insomniac forms an underground
+                            fight club with Tyler, a careless soap salesman</p>
+                        <div class="movie-meta">
+                            <span class="movie-year">1999</span>
+                            <span class="movie-rating">A</span>
+                            <span class="movie-duration">2h 49min</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="Matrix.png" alt="Matrix">
+                    <div class="movie-info">
+                        <h3>Matrix</h3>
+                        <p>Thomas Anderson, a computer programmer, is led to fight an underground war against powerful
+                            computers who have constructed his entire reality with a system called the Matrix.</p>
+                        <div class="movie-meta">
+                            <span class="movie-year">1999</span>
+                            <span class="movie-rating">R</span>
+                            <span class="movie-duration">3h 11min</span>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>Questions? Call 1-866-579-7172</p>
+        <div class="footer-cols">
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Investor Relations</a></li>
+                <li><a href="#">Ways To Watch</a></li>
+                <li><a href="#">Corporate Information</a></li>
+                <li><a href="#">Netflix Originals</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Terms Of Use</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Redeem Gift Cards</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Speed Test</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Media Center</a></li>
+                <li><a href="#">Buy Gift Cards</a></li>
+                <li><a href="#">Cookie Preferences</a></li>
+                <li><a href="#">Legal Notices</a></li>
+            </ul>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

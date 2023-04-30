@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>React</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Netflix</h1>
+        <p>
+            Netflix is a subscription-based streaming service that allows users to watch a wide variety of TV shows,
+            movies, documentaries, and more on internet-connected devices. It was founded in 1997 in California, USA,
+            and initially offered DVD rentals through mail delivery. In 2007, Netflix introduced a streaming service
+            that allowed subscribers to watch content online, and since then, it has become one of the most popular
+            streaming services globally, with millions of subscribers worldwide.
+
+            Netflix offers a vast library of content from various genres, including dramas, comedies, action movies,
+            romance, sci-fi, documentaries, and more. It has also produced many critically acclaimed original TV shows
+            and movies, such as Stranger Things, The Crown, House of Cards, Narcos, Orange is the New Black, and many
+            others. Netflix is available in over 190 countries and can be accessed on a wide range of devices, including
+            smart TVs, game consoles, mobile devices, and desktops.
+
+            One of the most notable features of Netflix is its recommendation algorithm, which suggests TV shows and
+            movies based on users' viewing history and preferences. It also offers the ability to download content to
+            watch offline, making it convenient for users who want to watch shows and movies on the go without an
+            internet connection. Overall, Netflix has revolutionized the way people consume TV shows and movies,
+            offering a convenient, affordable, and flexible alternative to traditional cable TV.
+
+
+
+
+        </p>
+        <div class="welcome-back"></div>
+    </div>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel" src="WelcomeBack.js"></script>
+    <script type="text/babel" src="CoolButton.js"></script>
+
+    <script type="text/babel">
+        ReactDOM.render(<WelcomeBack />, document.querySelector(".welcome-back"));
+    </script>
+</body>
+
+</html>
